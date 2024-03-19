@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tentact.dao.TMemberMapper">
+
+
+    <!--
+        查询员工
+        List<TMember> selectMember();
+    -->
+    <select id="selectMember" resultType="tMember">
+        select * from t_member;
+    </select>
+
+    <!--
+        添加员工
+        int insertMember(TMember tMember);
+    -->
+    <insert id="insertMember" parameterType="tMember">
+        insert into t_member values (#{id},#{name},#{salary},#{job},#{work});
+    </insert>
+    
+    <!--
+        删除员工
+        int deleteMember(String id);
+    -->
+    <delete id="deleteMember" parameterType="String">
+        delete from t_member where id = #{id};
+    </delete>
+
+    <!--
+        更新员工
+        查询员工通过id
+        TMember selectMemberById(String id);
+        int updateMember(TMember tMember);
+    -->
+    <select id="selectMemberById" parameterType="string" resultType="tMember">
+        select * from t_member where id = #{id};
+    </select>
+
+    <update id="updateMember" parameterType="tMember">
+        update t_member set name = #{name},salary = #{salary},job = #{job} where id = #{id};
+    </update>
+
+
+</mapper>

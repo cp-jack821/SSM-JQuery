@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tentact.dao.T_userMapper">
+
+    <select id="selectByuNamepWord"  resultType="t_user">
+        select * from t_user where username = #{name} and password = #{pwd};
+    </select>
+
+<!--参数类型可写可不写-->
+    <select id="selectByuName" resultType="t_user">
+        select * from t_user where username = #{username};
+    </select>
+    <insert id="regist" parameterType="t_user">
+        insert into t_user values (#{id},#{username},#{password},#{name},#{sex});
+    </insert>
+</mapper>
